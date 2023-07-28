@@ -35,6 +35,7 @@ import aiIcon from "./assets/ai.png";
 import psIcon from "./assets/ps.png";
 import officeIcon from "./assets/office.png";
 import Portfolio from "./components/Portfolio";
+import Footer from "./components/Footer";
 
 
 
@@ -128,7 +129,7 @@ const toolsArray = [
   {
     title: 'Github',
     img: <img src={githubIcon}></img>,
-    confidence: 3,
+    confidence: 2,
     desc: `The Git repository I'm more used to. It's also where I push all my personal projects (and where this resume is hosted).`
   },
   {
@@ -216,7 +217,7 @@ function App() {
 
   return (
     <>
-      <div className="w-screen h-screen flex-col items-center overflow-x-hidden scroll-smooth">
+      <div className="w-screen h-screen font-poppins flex-col items-center overflow-x-hidden scroll-smooth">
         <Header section={title} click={handleClick}></Header>
         <Hero></Hero>
         <AboutMe></AboutMe>
@@ -225,6 +226,7 @@ function App() {
         <Studies array={studiesArray}></Studies>
         <Courses array={coursesArray}></Courses>
         <Portfolio></Portfolio>
+        <Footer></Footer>
       </div>
     </>
   );

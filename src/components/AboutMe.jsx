@@ -7,7 +7,7 @@ const AboutMe = () => {
       className="h-auto w-full bg-black flex flex-col items-center justify-evenly p-8"
     >
       <div className="w-[30%] mt-24 h-auto text-white rounded-lg p-5">
-        <h1 className="font-semibold text-center text-yellow-400">{greeting}</h1>
+        <h1 className="font-semibold text-center text-5xl text-yellow-400">{greeting}</h1>
         <p className="p-4 text-xl text-center">
           My name is Jorge Carrasco, and I&apos;m from Spain. I got interested
           in Software Development a couple years ago, and managed to start
