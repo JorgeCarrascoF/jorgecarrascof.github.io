@@ -43,42 +43,42 @@ const Card = ({ title, img, type, stars, institution, date, desc, link }) => {
   let card;
   if (type === "soft-skill") {
     card = (
-      <div className="h-auto w-1/5 bg-black p-5 m-10 rounded-lg flex flex-col [&>img]:rounded-lg [&>img]:mb-4 [&>img]:w-11/12 justify-center items-center">
+      <div className="h-auto w-[75%]  xl:w-[25%] lg:w-[25%] sm:w-[35%] md:w-[40%] md:m-5 bg-black p-5 m-10 rounded-lg flex flex-col [&>img]:rounded-lg [&>img]:mb-4 [&>img]:w-11/12 justify-center items-center">
         {img}
-        <h2 className="w-full text-center text-lg font-semibold text-white border-t-[1px] pt-2 border-white">
+        <h2 className="w-full text-center text-lg font-semibold text-white border-t-[1px] pt-2 border-white sm:text-base">
           {title}
         </h2>
       </div>
     );
   } else if (type === "tool") {
     card = (
-      <div className="h-auto w-[30%] mx-4 my-4 relative bg-[#161616] [&>p]:hover:inline-block hover:rounded-b-none text-white text-center text-lg font-semibold p-5 rounded-lg cursor-pointer hover:bg-[#242424]">
-        <div className="flex flex-row justify-center items-center">
-          <h2 className="w-3/6 pl-2  border-r-2 border-yellow-400 flex items-center justify-start [&>img]:h-8 [&>img]:mr-4">
+      <div className="h-auto w-full p-[0.7rem] my-4 2xl:w-[30%] xl:w-[40%] lg:w-[45%] sm:w-[65%] md:p-5 relative bg-[#161616] [&>p]:hover:inline-block hover:rounded-b-none text-white text-center text-lg font-semibold rounded-lg cursor-pointer hover:bg-[#242424]">
+        <div className="flex flex-row justify-center items-center text-sm md:text-lg lg:text-base">
+          <h2 className="w-3/6 border-r-[1px] border-yellow-400 flex items-center justify-start [&>img]:h-8 [&>img]:mr-4">
             {img} {title}
           </h2>
-          <h2 className="ml-8 h-full">
-            Confidence:{<span className="text-yellow-400 ml-4">{confidence}</span>}{unconfidence}
+          <h2 className="ml-3 lg:ml-4 h-full sm:ml-5 md:ml-6">
+            Confidence:{<span className="text-yellow-400 ml-2">{confidence}</span>}{unconfidence}
           </h2>
         </div>
-        <p className="absolute w-full tracking-wide mt-4 p-6 -pt-4 rounded-b-xl hidden bg-[#242424] z-10 left-0">{desc}</p>
+        <p className="text-sm absolute w-full tracking-wide mt-0 p-6 -pt-4 rounded-b-xl hidden bg-[#242424] z-10 left-0 md:text-base">{desc}</p>
       </div>
     );
   } else if (type === "study") {
     card = (
-      <div className="w-[35%] aspect-square m-10  bg-[#161616] text-white text-lg p-5 rounded-lg flex flex-col justify-between items-end cursor-pointer hover:bg-[#242424]">
+      <div className="w-[90%] aspect-square m-4 lg:m-4 lg:w-[40%] sm:w-[65%] md:p-6 bg-[#161616] text-white text-lg p-5 rounded-lg flex flex-col justify-between items-end cursor-pointer hover:bg-[#242424]">
         <div>
-          <h2 className="w-full pl-2 flex flex-col font-semibold border-b-[1px] pb-3 border-white">
+          <h2 className="w-full text-lg tracking-wide 2xl:text-xl lg:text-base md:text-2xl pl-2 flex flex-col font-semibold border-b-[1px] pb-3 border-white">
             {title}{" "}
-            <span className="text-yellow-400 text-base font-normal">
+            <span className="text-yellow-400 text-sm tracking-normal 2xl:pt-2 2xl:text-lg xl:text-sm xl:mt-1 lg:text-[0.8rem] lg:mt-1 md:text-xl md:mt-1 font-normal">
               {" "}
               {institution} | {date}{" "}
             </span>
           </h2>
-          <p className="mt-6 tracking-wider">{desc}</p>
+          <p className="mt-6 text-base mb-6 tracking-wider 2xl:text-lg  xl:text-base xl:tracking-wide lg:tracking-tight lg:text-base md:text-xl">{desc}</p>
         </div>
         <a
-          className="text-white flex text-base items-center justify-end font-normal w-full hover:text-yellow-400 mr-1"
+          className="text-white  text-sm 2xl:text-lg  xl:text-sm xl:mt-4 lg:mt-3 lg:text-[0.75rem] md:text-xl flex items-center justify-end font-normal w-full hover:text-yellow-400 mr-1"
           target="_blank"
           rel="noreferrer"
           href={link}
@@ -89,20 +89,20 @@ const Card = ({ title, img, type, stars, institution, date, desc, link }) => {
     );
   } else if (type === "course") {
     card = (
-      <div className="w-[35%] aspect-square m-10 [&>img]:h-[33%] [&>img]:rounded-full bg-[#161616] hover:bg-[#242424] text-white text-lg p-5 rounded-lg flex flex-col justify-between items-center cursor-pointer">
+      <div className="w-[95%] m-10 [&>img]:h-32  2xl:h-[95%] xl:h-[95%] lg:h-auto lg:min-w-[33%] lg:m-5 lg:[&>img]:h-24 md:w-5/6 md:h-[25%] md:[&>img]:h-42 md:p-6 sm:w-5/6  bg-[#161616] hover:bg-[#242424] text-white text-lg p-5 rounded-lg flex flex-col justify-between items-center cursor-pointer">
         {img}
         <div className="h-[65%]">
-          <h2 className="w-full pl-2 mt-8 flex flex-col font-semibold border-b-[1px] pb-3 border-white">
+          <h2 className="w-full text-base pl-2 mt-8 flex flex-col font-semibold border-b-[1px] pb-3 border-white 2xl:text-2xl 2xl:tracking-wide lg:text-base md:text-2xl">
             {title}{" "}
-            <span className="text-yellow-400 text-base font-normal">
+            <span className="text-yellow-400 text-sm font-normal 2xl:text-xl 2xl:tracking-normal lg:tracking-normal lg:text-[0.8rem] md:text-xl">
               {" "}
               {institution} | {date}{" "}
             </span>
           </h2>
-          <p className="mt-6 tracking-wider">{desc}</p>
+          <p className="text-base tracking-normal my-4 xl:text-base xl:tracking-wide lg:tracking-normal lg:mt-3 lg:text-[0.9rem] md:text-xl sm:text-base">{desc}</p>
         </div>
         <a
-          className="text-white flex text-base items-center justify-end font-normal w-full hover:text-yellow-400 mr-1"
+          className="text-white flex text-sm items-center justify-end font-normal w-full hover:text-yellow-400 mr-1 md:text-xl md:mt-8 lg:text-base"
           target="_blank"
           rel="noreferrer"
           href={link}

@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const Courses = ({ array }) => {
+const Courses = ({ array, hover }) => {
   
   const coursesArray = (
-    <div className="w-10/12 mt-12 [&>li]:text-xl [&>li]:mb-4 flex items-center justify-center">
+    <div className="w-[90%] mt-10 flex items-center justify-center flex-col lg:flex-row">
       {array.map((e) => {
         return (
           <Card
@@ -25,7 +25,8 @@ const Courses = ({ array }) => {
   return (
     <section
       id="Courses"
-      className="h-auto bg-yellow-400 pt-8 flex flex-row justify-evenly"
+      onMouseEnter={hover}
+      className="h-auto bg-yellow-400 py-8 flex flex-col items-center justify-evenly 2xl:h-[70%] xl:h-[75%] lg:h-[80%]"
     >
       {coursesArray}
     </section>
@@ -34,6 +35,7 @@ const Courses = ({ array }) => {
 
 Courses.propTypes = {
   array: PropTypes.array,
+  hover: PropTypes.func
 }
 
 export default Courses;

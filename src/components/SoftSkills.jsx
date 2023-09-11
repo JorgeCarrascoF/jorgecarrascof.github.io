@@ -2,10 +2,10 @@ import Card from "./Card";
 import PropTypes from 'prop-types';
 
 
-const SoftSkills = ({array}) => {
+const SoftSkills = ({array, hover}) => {
 
   const softSkillsArray = (
-    <div className="w-10/12 mt-12 [&>li]:text-xl [&>li]:mb-4 flex  flex-wrap justify-evenly">
+    <div className="w-10/12 mt-12 [&>li]:text-xl [&>li]:mb-4 flex flex-wrap justify-evenly">
       {array.map((e) => {
         return (
           <Card
@@ -20,7 +20,7 @@ const SoftSkills = ({array}) => {
   );
 
   return (
-    <section id="SoftSkills" className="h-auto w-full bg-yellow-400 py-14 flex flex-col items-center">
+    <section id="Soft Skills" onMouseEnter={hover} className="h-auto w-full bg-yellow-400 py-14 flex flex-col items-center">
       {softSkillsArray}
     </section>
   );
@@ -28,6 +28,7 @@ const SoftSkills = ({array}) => {
 
 SoftSkills.propTypes = {
   array: PropTypes.array,
+  hover: PropTypes.func,
 }
 
 export default SoftSkills;

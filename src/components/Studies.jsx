@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import dropButton from "../assets/dropdown.svg";
 import { useState } from "react";
 
-const Studies = ({ array }) => {
+const Studies = ({ array, hover }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ const Studies = ({ array }) => {
   };
 
   const studiesArray = (
-    <div className="w-10/12 mt-12 [&>li]:text-xl [&>li]:mb-4 flex items-center justify-center">
+    <div className="w-10/12 mt-12 flex flex-col items-center justify-center lg:flex-row">
       {array.map((e) => {
         return (
           <Card
@@ -33,27 +33,28 @@ const Studies = ({ array }) => {
   return (
     <section
       id="Studies"
+      onMouseEnter={hover}
       className="w-full bg-black flex flex-col pt-4 pb-16 items-center justify-center"
     >
       {studiesArray}
-      <div className="w-7/12 bg-[#161616] text-white mt-8 flex flex-col items-center rounded-lg">
+      <div className="w-10/12 bg-[#161616] text-white mt-8 flex flex-col items-center rounded-lg md:w-10/12 lg:w-8/12">
         <h1
           onClick={handleClick}
-          className="w-full cursor-pointer font-semibold p-8 text-center flex justify-center tracking-wide items-center text-3xl [&>span]:text-yellow-400"
+          className="w-full text-base flex flex-wrap cursor-pointer font-semibold p-[0.7rem] text-center 2xl:text-2xl  xl:text-xl lg:text-base md:text-2xl md:p-6 justify-center items-center [&>span]:text-yellow-400"
         >
           What&apos;s my actual distinction between&nbsp;<span>studies</span>
           &nbsp;and&nbsp;<span>courses</span>?
           <img
             src={dropButton}
-            className={
+            className={`${
               isOpen
-                ? "h-12 ml-2 rotate-180 transition-all"
-                : "h-12 ml-2 transition-all"
-            }
+                ? "h-8 ml-0 rotate-180 transition-all"
+                : "h-8 ml-0 transition-all"
+            } sm:h-8`}
           ></img>
         </h1>
         {isOpen && (
-          <p className="text-xl [&>span]:text-yellow-400 w-10/12 tracking-wide py-8">
+          <p className="text-base text-center [&>span]:text-yellow-400 xl:text-lg w-10/12 py-6 lg:py-6 sm:text-lg lg:text-base">
             The distinction I made is based on two parameters: if it&apos;s{" "}
             <span>regulated</span>, and if it&apos;s <span>self-taught</span>.
             Every study listed above is regulated and had a tutor I could go ask
@@ -71,6 +72,7 @@ const Studies = ({ array }) => {
 
 Studies.propTypes = {
   array: PropTypes.array,
+  hover: PropTypes.func,
 };
 
 export default Studies;
