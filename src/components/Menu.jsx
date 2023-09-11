@@ -19,7 +19,7 @@ const Menu = ({ click }) => {
     <div
       className={`h-9 w-9 shadow-lg  relative mr-2 overflow-hidden transition-all duration-500 ease-in-out border-yellow-400 rounded-lg border-2 ${
         isOpen
-          ? "h-[20rem] w-32 lg:h-[22rem] xl:w-36 xl:h-96 bg-yellow-400"
+          ? "h-[20rem] w-[8rem] lg:h-[22rem] xl:w-36 xl:h-[22rem] bg-yellow-400"
           : ""
       }`}
     >

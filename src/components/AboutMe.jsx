@@ -23,8 +23,8 @@ const AboutMe = ({ hover }) => {
           possible direction.
         </p>
       </div>
-      <div className="w-1/2 flex flex-col items-center justify-evenly mb-16 md:flex-row md:w-full md:items-start">
-        <div className="w-full ml-14 2xl:w-[25%] xl:w-[30%] lg:w-[40%] text-white mt-12 md:ml-10">
+      <div className="w-full flex flex-col items-center justify-center mb-16 md:flex-row md:items-start">
+        <div className="w-auto border-white ml-14 2xl:w-[25%] xl:w-[30%] lg:w-[40%] text-white mt-12 md:ml-10">
           <h1 className="font-semibold text-2xl text-yellow-400 xl:text-4xl">
             .hobbies {`{`}
           </h1>
@@ -39,7 +39,7 @@ const AboutMe = ({ hover }) => {
           </ul>
           <h1 className="font-semibold text-2xl text-yellow-400 xl:text-4xl">{`}`}</h1>
         </div>
-        <div className="w-full ml-14 text-white mt-12 2xl:w-[25%] xl:w-[30%] lg:w-[40%] md:ml-10">
+        <div className="w-auto ml-14 text-white mt-12 2xl:w-[25%] xl:w-[30%] lg:w-[40%] md:ml-10">
           <h1 className="font-semibold text-2xl text-yellow-400 xl:text-4xl">
             moreInfo() {`{`}
           </h1>
