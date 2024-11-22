@@ -32,9 +32,9 @@ const studiesByYear = studies.reduce(
 
 const years = Object.keys(studiesByYear);
 
-const orderedStudies = years.reduce((acc, year) => {
+const orderedStudies = years.reduce((acc: any, year:any) => {
   acc[year] = studiesByYear[year].sort(
-    (a, b) => b.data.startingMonth - a.data.startingMonth
+    (a: any, b:any) => b.data.startingMonth - a.data.startingMonth
   );
   return acc;
 }, {});
