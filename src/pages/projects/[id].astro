@@ -1,0 +1,267 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Carousel from "../../components/Carousel.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project: { slug: any; data: any }) => ({
+    params: {
+      id: project.slug,
+    },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data, slug } = project;
+const { title, description, stack = [], gallery = [], image, links } = data;
+---
+
+<Layout title="Projects | Jorge Carrasco">
+  <section>
+    <div class="row">
+      <div class="image-container">
+        <a class="return" href="/projects">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            ><title>arrow-left</title><path
+              d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
+            ></path></svg
+          >
+        </a>
+        <img
+          src={image}
+          alt={`${title} project image`}
+          transition:name={`img-${slug}`}
+        />
+      </div>
+      <div class="info">
+        <h2>{title}</h2>
+        <p>
+          {description}
+        </p>
+        <div class="stack">
+          <h2>Stack Used</h2>
+          <div>
+            {stack.map((item: any) => <span class="stack-item">{item}</span>)}
+          </div>
+        </div>
+        <div class="buttons">
+          <a href={`${links.repository}`}>Go to repository</a>
+          {links.web && <a href={`${links.web}`}>Go to web/app</a>}
+        </div>
+      </div>
+    </div>
+    <div id="gallery">
+      <h2>Gallery</h2>
+      <Carousel gallery={gallery} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4rem;
+  }
+  .row {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 5.5rem);
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
+
+  .image-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a.return svg {
+    fill: #facc15;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .info {
+    display: flex;
+    width: 50%;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+  }
+
+  .info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .info p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .stack {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .stack h2 {
+    margin: 0;
+  }
+
+  .stack > div {
+    margin-left: 2rem;
+  }
+
+  .stack-item {
+    background-color: #242424;
+    color: #facc15;
+    padding: 0.4rem 0.6rem;
+    margin-left: 1rem;
+    border-radius: 8px;
+  }
+
+  .buttons {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .buttons a {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: #facc15;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  #gallery {
+    display: flex;
+    width: 80%;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 767px) {
+    .row {
+      margin-top: 2rem;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .image-container img {
+      width: 240px;
+      height: 240px;
+    }
+
+    .row .info {
+      width: 75%;
+      text-align: center;
+    }
+    .stack {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .stack h2 {
+      font-size: 1.5rem;
+    }
+
+    .stack > div {
+      margin-left: 0;
+    }
+
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .buttons a {
+      width: fit-content;
+    }
+
+    #gallery {
+      width: 100%;
+    }
+
+    #gallery h2 {
+      margin: 3.5rem 0 2rem 3.5rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .row {
+      margin-top: 2rem;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .image-container img {
+      width: 300px;
+      height: 300px;
+    }
+
+    .row .info {
+      width: 75%;
+      text-align: center;
+    }
+
+    .info p {
+      font-size: 1.4rem;
+    }
+
+    .stack {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .stack h2 {
+      font-size: 1.5rem;
+    }
+
+    .stack > div {
+      margin-left: 0;
+    }
+
+    .stack span {
+      font-size: 1.2rem;
+    }
+
+    .buttons {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .buttons a {
+      width: fit-content;
+    }
+
+    #gallery {
+      width: 100%;
+    }
+
+    #gallery h2 {
+      margin: 3.5rem 0 2rem 3.5rem;
+      font-size: 1.5rem;
+    }
+  }
+</style>

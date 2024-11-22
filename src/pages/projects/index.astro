@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Project from "../../components/Project.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const projects = await getCollection("projects");
+
+---
+
+<Layout title="Projects | Jorge Carrasco">
+  <section>
+    <div class="container">
+      {
+        projects.map((project: { slug: any; data: any }) => {
+          const { slug, data } = project;
+          return <Project slug={slug} data={{ ...data, image: `/projects/${data.image}` }} />;
+        })
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    width: 100%;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px){
+    .container {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+const { gallery } = Astro.props;
+---
+
+<div class="carousel">
+  <div>
+    {
+      gallery.map((image: string, index: number) => {
+        return (
+          <div class="slide">
+            <div class="slide-number">
+              {index + 1} / {gallery.length}
+            </div>
+            <img src={`/gallery/${image}`} />
+          </div>
+        );
+      })
+    }
+
+    <a class="prev-slide">&#10094;</a>
+    <a class="next-slide">&#10095;</a>
+  </div>
+  <div class="dot-container">
+    {gallery.map(() => <span class="dot" />)}
+  </div>
+</div>
+
+<script>
+  let slideIndex = 1;
+
+  const plusSlides = (n: number) => {
+    showSlides((slideIndex += n));
+  };
+
+  const currentSlide = (n: number) => {
+    showSlides((slideIndex = n));
+  };
+
+  function showSlides(n: number) {
+    let i;
+    let slides = document.getElementsByClassName(
+      "slide"
+    ) as HTMLCollectionOf<HTMLElement>;
+    let dots = document.getElementsByClassName(
+      "dot"
+    ) as HTMLCollectionOf<HTMLElement>;
+    if (slides.length > 0) {
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = i === slideIndex - 1 ? "flex" : "none";
+      }
+    }
+    if (dots.length > 0) {
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      dots[slideIndex - 1].className += " active";
+    }
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const prevSlide = document.querySelector(".prev-slide");
+    prevSlide?.addEventListener("click", () => plusSlides(-1));
+
+    const nextSlide = document.querySelector(".next-slide");
+    nextSlide?.addEventListener("click", () => plusSlides(1));
+
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => currentSlide(index + 1));
+    });
+    showSlides(slideIndex);
+  });
+</script>
+
+<style>
+  .carousel {
+    max-width: 60%;
+    position: relative;
+    margin: auto;
+    background-color: #242424;
+    border-radius: 10px;
+  }
+
+  .slide {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .prev-slide,
+  .next-slide {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin: -22px 5px 0 5px;
+    padding: 10px;
+    background-color: rgba(250, 204, 21, 0.8);
+    color: black;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border-radius: 3px;
+    user-select: none;
+  }
+
+  .next-slide {
+    right: 0;
+  }
+
+  .prev-slide:hover,
+  .next-slide:hover {
+    background-color: rgba(250, 204, 21);
+    color: white;
+  }
+
+  .slide-number {
+    color: #f2f2f2;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 10px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 5px;
+    border-radius: 5px;
+  }
+
+  .dot-container {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  .dot:hover {
+    background-color: rgba(250, 204, 21, 0.7);
+  }
+
+  .active,
+  .active:hover {
+    background-color: rgba(250, 204, 21);
+  }
+
+  @media (max-width: 767px) {
+    .carousel {
+      max-width: 90%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .carousel {
+      max-width: 80%;
+    }
+  }
+</style>

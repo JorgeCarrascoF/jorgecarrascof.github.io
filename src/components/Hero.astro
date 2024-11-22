@@ -1,0 +1,187 @@
+---
+
+---
+
+<section>
+  <div class="description">
+    <h1>Jorge Carrasco</h1>
+    <h2>Software Developer</h2>
+    <p>
+      Hi! I'm a Software Developer student looking for a trainee / junior
+      experience in web development, either in a frontend or backend position.
+    </p>
+    <span>Contact me!</span>
+    <div class="links">
+      <a class="icon" target="_blank" href="mailto:jorgecarfacpsico@gmail.com">
+        <img src="./mail.svg" alt="email icon" />
+      </a>
+      <a class="icon" target="_blank" href="https://github.com/JorgeCarrascoF">
+        <img src="./github.svg" alt="github icon" />
+      </a>
+      <a
+        class="icon"
+        target="_blank"
+        href="https://www.linkedin.com/in/jorge-carrasco-facundo"
+      >
+        <img src="./linkedin.svg" alt="linkedin icon" />
+      </a>
+    </div>
+  </div>
+  <img
+    id="portraitImage"
+    transition:name="portraitImage"
+    src="./heroImg.webp"
+    alt="portrait image"
+  />
+</section>
+
+<style>
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("../background.webp");
+    background-size: cover;
+  }
+  .description {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5rem;
+    color: white;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    color: #facc15;
+  }
+  .description p {
+    width: 70%;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .description span {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+  }
+
+  .links > .icon:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  .links > .icon > img {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+  img#portraitImage {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    border: 0.5rem solid #facc15;
+  }
+
+  @media (max-width: 767px) {
+    section {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .description {
+      width: 80%;
+      padding-top: 3rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .description h1 {
+      width: 100%;
+      font-size: 2rem;
+    }
+
+    .description h2 {
+      font-size: 1.5rem;
+      width: 100%;
+    }
+
+    .description p {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+
+    .description span {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+
+    .links {
+      width: 100%;
+      justify-content: center;
+    }
+
+    img#portraitImage {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    section {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .description {
+      width: 70%;
+      padding-top: 2rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .description h1 {
+      width: 100%;
+      font-size: 2.5rem;
+    }
+
+    .description h2 {
+      font-size: 2rem;
+      width: 100%;
+    }
+
+    .description p {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+
+    .description span {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+
+    .links {
+      width: 100%;
+      justify-content: center;
+    }
+
+    img#portraitImage {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1520px) {
+  }
+
+</style>

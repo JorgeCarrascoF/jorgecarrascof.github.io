@@ -1,0 +1,158 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Tool from "../../components/Tool.astro";
+
+const tools = await getCollection("tools");
+---
+
+<Layout title="Projects | Jorge Carrasco">
+  <section>
+    <div class="container">
+      {
+        tools.map((tool: { slug: any; data: object }) => {
+          const { data } = tool;
+          return <Tool data={data} />;
+        })
+      }
+    </div>
+    <div class="star-rating">
+      <h3>
+        Q: But... what do the stars mean? <br />
+        A: It's all about <span>confidence</span>
+      </h3>
+      <p>
+        <span>Confidence</span> is a star-rated measure of how comfortable I feel
+        using these tools. Giving each tool a number of 1-5 stars allows me to externalize
+        how I know the tool, how many projects I've built with it and what can you
+        expect from me when I encounter this tool again. Of course, confidence changes
+        over time, depending how up to date I am with the tool and how much time
+        has passed since the last time I worked with it.
+      </p>
+      <ul>
+        <li>
+          Level 1 (<span>★</span>): I've encountered the tool in a very basic
+          way. I know its fundamental pros and cons, and managed to work with it
+          in a surface level. Depending on the tool, this means I've worked with
+          it between less than a week and over a month. I will need help to
+          manage through some aspects of the tool, which are totally unknown for
+          me.
+        </li>
+        <li>
+          Level 2 (<span>★★</span>): I've experimented a few tweaks and tricks
+          of the tool, and can work with it in a personal project, but in a
+          slower pace than expected. I spend a lot of time researching for
+          functionalities of the tool.
+        </li>
+        <li>
+          Level 3 (<span>★★★</span>): I feel comfortable enough with the tool to
+          consider it a proper way to manage bigger projects, but I'll probably
+          need to ask for help or do some researching for certain aspects of the
+          tool. If I think of a project that feels appropiate for this tool,
+          I'll consider the tool the first choice for it immediately.
+        </li>
+        <li>
+          Level 4 (<span>★★★★</span>): The tool belongs to my daily basis, both
+          for work and personal projects, and I find myself able to work with it
+          for every aspect of the project. The ammount of researching needed is
+          greatly decreased.
+        </li>
+        <li>
+          Level 5 (<span>★★★★★</span>): I feel strong enough with the tool to
+          work with it with almost zero research, and my mind has adapted to how
+          the tool works and how to solve problems that in lower levels could've
+          costed me more time.
+        </li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    width: 100%;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .star-rating {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .star-rating h3 {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  .star-rating span {
+    color: #facc25;
+  }
+
+  .star-rating p {
+    font-size: 1.2rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.1rem;
+  }
+
+  li {
+    margin: 0 auto;
+    list-style: none;
+    width: 90%;
+  }
+
+  @media (max-width: 767px) {
+    .container {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .star-rating {
+      width: 80%;
+    }
+
+    .star-rating ul {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      width: 100%;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .star-rating {
+      width: 80%;
+    }
+
+    .star-rating ul {
+      width: 100%;
+    }
+  }
+</style>
