@@ -21,6 +21,7 @@ export const TypedText = () => {
   useEffect(() => {
     const path = window.location.pathname;
     const paths = path.split("/").slice(1);
+    console.log('----------------', paths)
 
     let pathString;
     if (paths.length === 2 && paths[0] === "projects") {
