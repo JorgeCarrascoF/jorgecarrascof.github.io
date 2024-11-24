@@ -4,17 +4,17 @@ import Typed from "typed.js";
 const pathNames = {
   "/": "Home",
   "about-me": "About Me",
-  "projects": "Projects",
-  "studies": "Studies",
-  "tools": "Tools",
+  projects: "Projects",
+  studies: "Studies",
+  tools: "Tools",
 };
 
 const projects = {
-  'tiamat': "Tiamat",
-  'artchive': "Artchive",
+  tiamat: "Tiamat",
+  artchive: "Artchive",
   "dnd-sheet": "DnD Sheet",
   "to-dool": "To-Dool",
-  "mistborn": "Mistborn Game",
+  mistborn: "Mistborn Game",
 };
 
 export const TypedText = () => {
@@ -23,8 +23,8 @@ export const TypedText = () => {
     const paths = path.split("/").slice(1);
 
     let pathString;
-    
-    if(paths.length === 2) {
+
+    if (paths.length === 2) {
       pathString = "&lt; " + projects[paths[0]] + " /&gt;";
     } else if (paths.length === 3) {
       pathString = "&lt; " + projects[paths[1]] + " /&gt;";
