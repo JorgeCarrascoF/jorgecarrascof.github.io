@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import Typed from "typed.js";
 
 const pathNames = {
-  "": "Home",
-  "/about-me": "About Me",
-  "/projects": "Projects",
-  "/studies": "Studies",
-  "/tools": "Tools",
+  "/": "Home",
+  "about-me": "About Me",
+  "projects": "Projects",
+  "studies": "Studies",
+  "tools": "Tools",
 };
 
 const projects = {
@@ -21,7 +21,6 @@ export const TypedText = () => {
   useEffect(() => {
     const path = window.location.pathname;
     const paths = path.split("/").slice(1);
-    console.log(path)
 
     let pathString;
     
