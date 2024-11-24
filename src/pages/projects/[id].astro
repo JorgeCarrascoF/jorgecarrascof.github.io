@@ -17,8 +17,6 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { data, slug } = project;
 const { title, description, stack = [], gallery = [], image, links } = data;
-
-console.log(image)
 ---
 
 <Layout title="Projects | Jorge Carrasco">
@@ -33,7 +31,7 @@ console.log(image)
           >
         </a>
         <img
-          src={`${image}`}
+          src={`../${image}`}
           alt={`${title} project image`}
           transition:name={`img-${slug}`}
         />
