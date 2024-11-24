@@ -21,6 +21,7 @@ export const TypedText = () => {
   useEffect(() => {
     const path = window.location.pathname;
     const paths = path.split("/").slice(1);
+    console.log(path)
 
     let pathString;
     
