@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Typed from "typed.js";
 
 const pathNames = {
-  "/": "Home",
+  "": "Home",
   "/about-me": "About Me",
   "/projects": "Projects",
   "/studies": "Studies",
@@ -21,10 +21,12 @@ export const TypedText = () => {
   useEffect(() => {
     const path = window.location.pathname;
     const paths = path.split("/").slice(1);
-    console.log('----------------', paths)
 
     let pathString;
-    if (paths.length === 2 && paths[0] === "projects") {
+    
+    if(paths.length === 2) {
+      pathString = "&lt; " + projects[paths[0]] + " /&gt;";
+    } else if (paths.length === 3) {
       pathString = "&lt; " + projects[paths[1]] + " /&gt;";
     } else {
       pathString = "&lt; " + pathNames[path] + " /&gt;";
