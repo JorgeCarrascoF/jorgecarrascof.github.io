@@ -10,10 +10,10 @@ const url = Astro.url.pathname;
   </div>
   <nav class="nav">
     <a href="/" class={`${url == "/" && "active"}`}>Home</a>
-    <a href="/about-me" class={`${url == "/about-me" && "active"}`}>About me</a>
-    <a href="/projects" class={`${url == "/projects" && "active"}`}>Projects</a>
-    <a href="/studies" class={`${url == "/studies" && "active"}`}>Studies</a>
-    <a href="/tools" class={`${url == "/tools" && "active"}`}>Tools</a>
+    <a href="/about-me" class={`${url == "about-me" && "active"}`}>About me</a>
+    <a href="/projects" class={`${url == "projects" && "active"}`}>Projects</a>
+    <a href="/studies" class={`${url == "studies" && "active"}`}>Studies</a>
+    <a href="/tools" class={`${url == "tools" && "active"}`}>Tools</a>
     <div class={`links ${url == "/" && "hidden"}`}>
       <a class="icon" target="_blank" href="mailto:jorgecarfacpsico@gmail.com">
         <img src="/mail.svg" alt="email icon" />
