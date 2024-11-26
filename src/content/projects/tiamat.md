@@ -6,11 +6,9 @@ image: tiamat-icon.webp
 stack: [React Native, Expo, AsyncStorage]
 gallery:
   [
-    tiamat-app-1.webp,
-    tiamat-app-2.webp,
-    tiamat-app-3.webp,
-    tiamat-app-4.webp,
-    tiamat-app-5.webp,
+    tiamat-1.webp,
+    tiamat-2.webp,
+    tiamat-3.webp,
   ]
 links:
   repository: https://github.com/JorgeCarrascoF/Tiamat
