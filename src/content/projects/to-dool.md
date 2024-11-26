@@ -8,5 +8,5 @@ stack: [Tailwind, React, Vite]
 gallery: [to-dool-1.webp, to-dool-2.webp, to-dool-3.webp, to-dool-4.webp]
 links:
   repository: https://github.com/JorgeCarrascoF/to-dool
-  web: https://jorgecarrascof.github.io/to-dool/
+  web: https://jorgecarrascof.github.io/To-Dool/
 ---
