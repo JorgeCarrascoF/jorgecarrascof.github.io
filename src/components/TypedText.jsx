@@ -15,6 +15,7 @@ const projects = {
   "dnd-sheet": "DnD Sheet",
   "to-dool": "To-Dool",
   "mistborn": "Mistborn Game",
+  "undersounds": "Undersounds",
 };
 
 export const TypedText = () => {
