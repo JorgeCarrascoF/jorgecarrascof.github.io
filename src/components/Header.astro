@@ -45,6 +45,7 @@ const url = Astro.url.pathname;
         >Projects</a
       >
       <a href="/studies" class={`${url == "/studies" && "active"}`}>Studies</a>
+      <a href="/experience" class={`${url == "/experience" && "active"}`}>Experience</a>
       <a href="/tools" class={`${url == "/tools" && "active"}`}>Tools</a>
     </div>
   </nav>
@@ -70,7 +71,7 @@ const url = Astro.url.pathname;
   }
 
   .nav {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
