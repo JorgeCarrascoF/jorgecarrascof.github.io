@@ -7,6 +7,7 @@ const pathNames = {
   "projects": "Projects",
   "studies": "Studies",
   "tools": "Tools",
+  "experience": "Experience",
 };
 
 const projects = {

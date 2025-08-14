@@ -1,0 +1,245 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const experience = await getCollection("experience");
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const experienceByYear = experience.reduce(
+  (acc: { [key: number]: typeof experience }, exp) => {
+    const year = exp.data.startYear;
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(exp);
+    return acc;
+  },
+  {}
+);
+
+const years = Object.keys(experienceByYear);
+
+const orderedExperience = years.reduce((acc: any, year:any) => {
+  acc[year] = experienceByYear[year].sort(
+    (a: any, b:any) => b.data.startingMonth - a.data.startingMonth
+  );
+  return acc;
+}, {});
+---
+
+<Layout title="Studies | Jorge Carrasco">
+  <section>
+    <div class="container">
+      {
+        years.map((year) => (
+          <div class="year">
+            <span class="title">{year}</span>
+            <div class="content">
+              <div class="studies">
+                {orderedExperience[year].map((exp: any) => (
+                  <div>
+                    <a href={exp.data.link} target="_blank">
+                      <h3>
+                        [ {months[exp.data.startMonth - 1]} - {exp.data.endMonth ? months[exp.data.endMonth - 1] : "Present"} ]
+                        <span>{exp.data.title}</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <title>arrow-top-right-thick</title>
+                          <path d="M8.5,18.31L5.69,15.5L12.06,9.12H7.11V5.69H18.31V16.89H14.89V11.94L8.5,18.31Z" />
+                        </svg>
+                      </h3>
+
+                      <p class="description">{exp.data.description}</p>
+                      <div class="tag-container">
+                        <span class="tag">{exp.data.type}</span>
+                        {exp.data.company && (
+                          <span class="tag">{exp.data.company}</span>
+                        )}
+                        {exp.data.location && (
+                          <span class="tag">{exp.data.location}</span>
+                        )}
+                      </div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    width: 100%;
+    padding: 4rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 60%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .year {
+    width: 80%;
+    color: #facc25;
+    padding: 2rem;
+    position: relative;
+    border-radius: 10px;
+    background: #161616;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .studies {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .studies h3 {
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #facc25;
+  }
+
+  a:hover svg {
+    transform: translate(0.15rem, -0.15rem);
+  }
+
+  svg {
+    fill: #facc25;
+    width: 1rem;
+    height: 1rem;
+    transition: all 0.1s linear;
+  }
+
+  .studies h3 {
+    font-size: 1.5rem;
+  }
+  .studies h3 > span {
+    color: white;
+  }
+
+  .studies .description {
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag-container {
+    display: flex;
+    gap: 1.2rem;
+    margin-left: 1rem;
+  }
+
+  .tag {
+    padding: 5px 15px;
+    color: #facc25;
+    width: fit-content;
+    background-color: #242424;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 767px) {
+    section {
+      padding: 2rem 0;
+    }
+
+    .container {
+      width: 90%;
+    }
+    .year {
+      width: 80%;
+    }
+
+    .studies {
+      margin: 0;
+    }
+
+    .studies h3 {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+
+    .studies .description {
+      width: 100%;
+      margin-left: 0;
+      font-size: 1.2rem;
+    }
+
+    .tag-container {
+      margin-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    section {
+      padding: 2rem 0;
+    }
+
+    .container {
+      width: 90%;
+    }
+    .year {
+      width: 80%;
+    }
+
+    .studies {
+      margin: 0;
+    }
+
+    .studies h3 {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+
+    .studies .description {
+      width: 100%;
+      margin-left: 0;
+      font-size: 1.2rem;
+    }
+
+    .tag-container {
+      margin-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+</style>

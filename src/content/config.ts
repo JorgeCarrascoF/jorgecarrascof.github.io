@@ -37,4 +37,20 @@ const tools = defineCollection({
   })
 })
 
-export const collections = { projects, studies, tools };
+const experience = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    description: z.string(),
+    type: z.string(),
+    location: z.string().optional().nullable(),
+    startYear: z.number(),
+    startMonth: z.number(),
+    endYear: z.number(),
+    endMonth: z.number(),
+    link: z.string().url(),
+    img: z.string().optional().nullable(),
+  })
+})
+
+export const collections = { projects, studies, tools, experience };

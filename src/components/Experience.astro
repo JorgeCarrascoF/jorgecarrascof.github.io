@@ -1,0 +1,149 @@
+---
+const { slug, data } = Astro.props;
+---
+
+<div class="experience">
+  <a href={data.link ? data.link : "#"} target={data.link ? "_blank" : "_self"}>
+    <div>
+      <span class="experience-title">
+        {data.title} – {data.company}
+        {data.link && (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>arrow-top-right-thick</title>
+            <path d="M8.5,18.31L5.69,15.5L12.06,9.12H7.11V5.69H18.31V16.89H14.89V11.94L8.5,18.31Z"></path>
+          </svg>
+        )}
+      </span>
+      <p class="experience-period">
+        {data.startMonth}/{data.startYear} – {data.endYear ? `${data.endMonth}/${data.endYear}` : "Present"}
+      </p>
+      <p>
+        {data.description}
+      </p>
+    </div>
+  </a>
+</div>
+
+<style>
+  .experience {
+    width: 45%;
+    display: flex;
+    padding: 1px;
+    border-radius: 15px;
+    background-color: #161616;
+    flex-direction: column;
+    height: fit-content;
+    color: white;
+    cursor: pointer;
+    transition: all 0.1s linear;
+  }
+
+  .experience > a {
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: white;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .experience > a > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    align-items: center;
+  }
+
+  .experience svg {
+    fill: white;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 0.5rem;
+    transition: all 0.1s linear;
+  }
+
+  .experience-period {
+    font-size: 1rem;
+    color: #aaa;
+    margin: 0.3rem 0 0.5rem 0;
+  }
+
+  .experience:is(:hover, :focus-within) {
+    background-color: #242424;
+  }
+
+  .experience:is(:hover, :focus-within) svg {
+    fill: #facc15;
+    transform: translateX(0.15rem) translateY(-0.15rem);
+  }
+
+  .experience:is(:hover, :focus-within) .experience-title {
+    color: #facc15;
+  }
+
+  @media (max-width: 767px) {
+    .experience {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .experience a {
+      width: 90%;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .experience-title {
+      padding-top: 1.5rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    p {
+      padding-top: 0.2rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .experience {
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .experience a {
+      width: 90%;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .experience-title {
+      padding-top: 1.5rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    p {
+      padding-top: 0.2rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+</style>
