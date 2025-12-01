@@ -12,10 +12,9 @@ const pathNames = {
 
 const projects = {
   "tiamat": "Tiamat",
-  "artchive": "Artchive",
   "dnd-sheet": "DnD Sheet",
   "to-dool": "To-Dool",
-  "mistborn": "Mistborn Game",
+  "buggle": "Buggle",
   "undersounds": "Undersounds",
   "microservices": "Microservices",
 };
