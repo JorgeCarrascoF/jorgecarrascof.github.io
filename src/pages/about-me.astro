@@ -145,6 +145,12 @@ import Layout from "../layouts/Layout.astro";
         </span>
         <ul>
           <li>
+            <span> Software Architecture </span>
+            <div class="outer-bar">
+              <div class="inner-bar" style="max-width: 100%;"></div>
+            </div>
+          </li>
+          <li>
             <span> FullStack Development </span>
             <div class="outer-bar">
               <div class="inner-bar" style="max-width: 90%;"></div>
@@ -154,12 +160,6 @@ import Layout from "../layouts/Layout.astro";
             <span> Software Development </span>
             <div class="outer-bar">
               <div class="inner-bar" style="max-width: 70%;"></div>
-            </div>
-          </li>
-          <li>
-            <span> Cybersecurity </span>
-            <div class="outer-bar">
-              <div class="inner-bar" style="max-width: 65%;"></div>
             </div>
           </li>
           <li>
@@ -497,7 +497,7 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1023px){
+  @media (min-width: 768px) and (max-width: 1023px) {
     section {
       flex-direction: column;
       margin-bottom: 5rem;
@@ -603,12 +603,10 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  
   @media (min-width: 1024px) and (max-width: 1520px) {
     .info {
       padding: 0;
     }
-    
 
     .info-container {
       width: 55%;
@@ -631,5 +629,5 @@ import Layout from "../layouts/Layout.astro";
     span.desktop {
       display: none;
     }
-}
+  }
 </style>

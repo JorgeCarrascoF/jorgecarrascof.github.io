@@ -17,6 +17,7 @@ const projects = {
   "to-dool": "To-Dool",
   "mistborn": "Mistborn Game",
   "undersounds": "Undersounds",
+  "microservices": "Microservices",
 };
 
 export const TypedText = () => {
