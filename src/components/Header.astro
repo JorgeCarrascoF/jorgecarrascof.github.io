@@ -8,47 +8,49 @@ const url = Astro.url.pathname;
   <div class="typed-text-wrapper">
     <TypedText client:only />
   </div>
-  <nav class="nav">
-    <a href="/" class={`${url == "/" && "active"}`}>Home</a>
-    <a href="/about-me" class={`${url == "about-me" && "active"}`}>About me</a>
-    <a href="/projects" class={`${url == "projects" && "active"}`}>Projects</a>
-    <a href="/studies" class={`${url == "studies" && "active"}`}>Studies</a>
-    <a href="/experience" class={`${url == "experience" && "active"}`}>Experience</a>
-    <a href="/tools" class={`${url == "tools" && "active"}`}>Tools</a>
-    <div class={`links ${url == "/" && "hidden"}`}>
-      <a class="icon" target="_blank" href="mailto:jorgecarfacpsico@gmail.com">
-        <img src="/mail.svg" alt="email icon" />
-      </a>
-      <a class="icon" target="_blank" href="https://github.com/JorgeCarrascoF">
-        <img src="/github.svg" alt="github icon" />
-      </a>
-      <a
-        class="icon"
-        target="_blank"
-        href="https://www.linkedin.com/in/jorge-carrasco-facundo"
-      >
-        <img src="/linkedin.svg" alt="linkedin icon" />
-      </a>
-    </div>
-  </nav>
-  <nav class="nav-mobile">
-    <div class="nav-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-        ><title>menu</title><path
-          d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg
-      >
-      <a href="/" class={`${url == "/" && "active"}`}>Home</a>
-      <a href="/about-me" class={`${url == "/about-me" && "active"}`}
-        >About me</a
-      >
-      <a href="/projects" class={`${url == "/projects" && "active"}`}
-        >Projects</a
-      >
-      <a href="/studies" class={`${url == "/studies" && "active"}`}>Studies</a>
-      <a href="/experience" class={`${url == "/experience" && "active"}`}>Experience</a>
-      <a href="/tools" class={`${url == "/tools" && "active"}`}>Tools</a>
-    </div>
-  </nav>
+    <nav class="nav">
+     <a href="/" class={`${url == "/" && "active"}`}>Home</a>
+     <a href="/about-me" class={`${url == "about-me" && "active"}`}>About me</a>
+     <a href="/projects" class={`${url == "projects" && "active"}`}>Projects</a>
+     <a href="/studies" class={`${url == "studies" && "active"}`}>Studies</a>
+     <a href="/experience" class={`${url == "experience" && "active"}`}>Experience</a>
+     <a href="/tools" class={`${url == "tools" && "active"}`}>Tools</a>
+     <a href="/blog" class={`${url == "/blog" && "active"}`}>Blog</a>
+     <div class={`links ${url == "/" && "hidden"}`}>
+       <a class="icon" target="_blank" href="mailto:jorgecarfacpsico@gmail.com">
+         <img src="/mail.svg" alt="email icon" />
+       </a>
+       <a class="icon" target="_blank" href="https://github.com/JorgeCarrascoF">
+         <img src="/github.svg" alt="github icon" />
+       </a>
+       <a
+         class="icon"
+         target="_blank"
+         href="https://www.linkedin.com/in/jorge-carrasco-facundo"
+       >
+         <img src="/linkedin.svg" alt="linkedin icon" />
+       </a>
+     </div>
+   </nav>
+   <nav class="nav-mobile">
+     <div class="nav-wrapper">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         ><title>menu</title><path
+           d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg
+       >
+       <a href="/" class={`${url == "/" && "active"}`}>Home</a>
+       <a href="/about-me" class={`${url == "/about-me" && "active"}`}
+         >About me</a
+       >
+       <a href="/projects" class={`${url == "/projects" && "active"}`}
+         >Projects</a
+       >
+       <a href="/studies" class={`${url == "/studies" && "active"}`}>Studies</a>
+       <a href="/experience" class={`${url == "/experience" && "active"}`}>Experience</a>
+       <a href="/tools" class={`${url == "/tools" && "active"}`}>Tools</a>
+       <a href="/blog" class={`${url == "/blog" && "active"}`}>Blog</a>
+     </div>
+   </nav>
 </header>
 
 <style>
