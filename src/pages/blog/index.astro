@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const blogPosts = await getCollection('blog');
+// Sort by date descending (newest first)
+const sortedPosts = blogPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog">
+  <section>
+    <div class="container">
+      <h1 class="section-title">Blog</h1>
+      <div class="posts-grid">
+        {sortedPosts.map(post => (
+          <article class="post-card">
+            <h2 class="post-title">{post.data.title}</h2>
+            <time class="post-date">{post.data.pubDate.toLocaleDateString()}</time>
+            <p class="post-description">{post.data.description}</p>
+            <div class="post-tags">
+              {post.data.tags?.map(tag => (
+                <span class="tag" key={tag}>{tag}</span>
+              ))}
+            </div>
+            <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    width: 100%;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .post-card {
+    background: #161616;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 300px;
+    transition: transform 0.2s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .post-date {
+    color: #facc25;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .post-description {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    padding: 3px 8px;
+    background-color: #242424;
+    color: #facc25;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+
+  .read-more {
+    color: #facc25;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .container {
+      width: 90%;
+    }
+    
+    .post-card {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      width: 90%;
+    }
+    
+    .post-card {
+      width: 45%;
+    }
+  }
+</style>
