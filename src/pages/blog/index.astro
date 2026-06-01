@@ -1,31 +1,40 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
-const blogPosts = await getCollection('blog');
+const blogPosts = await getCollection("blog");
 // Sort by date descending (newest first)
-const sortedPosts = blogPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedPosts = blogPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <Layout title="Blog">
   <section>
     <div class="container">
-      <h1 class="section-title">Blog</h1>
       <div class="posts-grid">
-        {sortedPosts.map(post => (
-          <article class="post-card">
-            <h2 class="post-title">{post.data.title}</h2>
-            <time class="post-date">{post.data.pubDate.toLocaleDateString()}</time>
-            <p class="post-description">{post.data.description}</p>
-            <div class="post-tags">
-              {post.data.tags?.map(tag => (
-                <span class="tag" key={tag}>{tag}</span>
-              ))}
-            </div>
-            <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
-          </article>
-        ))}
+        {
+          sortedPosts.map((post) => (
+            <article class="post-card">
+              <h2 class="post-title">{post.data.title}</h2>
+
+              <p class="post-description">{post.data.description}</p>
+              <div class="post-tags">
+                {post.data.tags?.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <div class="post-bottom-line">
+                <a href={`/blog/${post.slug}`} class="read-more">
+                  Read more →
+                </a>
+                <time class="post-date">
+                  {post.data.pubDate.toLocaleDateString()}
+                </time>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -36,32 +45,40 @@ const sortedPosts = blogPosts
     width: 100%;
     padding: 3rem 0;
     display: flex;
-    align-items: center;
     justify-content: center;
   }
 
   .container {
     width: 75%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
+    flex-direction: column;
   }
 
   .section-title {
     font-size: 2.5rem;
+    height: 60px;
     font-weight: bold;
     color: white;
-    margin-bottom: 2rem;
     text-align: center;
     width: 100%;
   }
 
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
   .post-card {
+    cursor: pointer;
+    border: 1px solid #333;
     background: #161616;
     border-radius: 10px;
-    padding: 2rem;
-    width: 300px;
+    padding: 1.5rem 2rem;
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .post-card:hover {
@@ -72,26 +89,32 @@ const sortedPosts = blogPosts
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: white;
+    line-height: 1.2;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .post-date {
     color: #facc25;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
+    font-weight: bold;
     display: block;
   }
 
   .post-description {
     color: #ccc;
     font-size: 1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
   }
 
   .post-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+
     margin-bottom: 1.5rem;
   }
 
@@ -108,20 +131,26 @@ const sortedPosts = blogPosts
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    margin-top: 1rem;
   }
 
   .read-more:hover {
     text-decoration: underline;
   }
 
+  .post-bottom-line {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
   @media (max-width: 767px) {
     .container {
       width: 90%;
     }
-    
+
     .post-card {
       width: 100%;
+      height: 100%;
     }
   }
 
@@ -129,9 +158,10 @@ const sortedPosts = blogPosts
     .container {
       width: 90%;
     }
-    
+
     .post-card {
       width: 45%;
+      height: 100%;
     }
   }
 </style>

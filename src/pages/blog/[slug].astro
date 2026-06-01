@@ -1,13 +1,22 @@
 ---
-import { getEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import { getEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
-const { slug } = Astro.params;
-const post = await getEntry('blog', slug);
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
 
 if (!post) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
+
+const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
@@ -16,16 +25,21 @@ if (!post) {
       <article class="post-detail">
         <h1 class="post-title">{post.data.title}</h1>
         <div class="post-meta">
-          <time class="post-date">{post.data.pubDate.toLocaleDateString()}</time>
-          {post.data.tags && (
-            <div class="post-tags">
-              {post.data.tags.map(tag => (
-                <span class="tag" key={tag}>{tag}</span>
-              ))}
-            </div>
-          )}
+          <time class="post-date">{post.data.pubDate.toLocaleDateString()}</time
+          >
+          {
+            post.data.tags && (
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )
+          }
         </div>
-        <div class="post-content" set:html={await post.render().Content} />
+        <div class="post-content">
+          <Content />
+        </div>
       </article>
     </div>
   </section>
@@ -41,15 +55,18 @@ if (!post) {
   }
 
   .container {
-    width: 75%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
+  
   .post-detail {
+    border: 1px solid #333;
     background: #161616;
     border-radius: 10px;
     padding: 2.5rem;
     width: 100%;
-    max-width: 800px;
   }
 
   .post-title {
@@ -149,18 +166,18 @@ if (!post) {
     background-color: #242424;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
   }
 
   @media (max-width: 767px) {
     .container {
       width: 90%;
     }
-    
+
     .post-detail {
       padding: 1.5rem;
     }
-    
+
     .post-title {
       font-size: 2rem;
     }
