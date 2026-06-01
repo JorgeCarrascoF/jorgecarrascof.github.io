@@ -42,8 +42,6 @@ export const TypedText = () => {
         .join(" ");
     }
 
-    console.log(paths)
-
     if (paths.length === 2) {
       pathString = "&lt; " + pathNames[paths[0]] + " /&gt;";
     } else if (paths.length === 3) {
