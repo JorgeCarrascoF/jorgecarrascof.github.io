@@ -4,20 +4,20 @@ import Typed from "typed.js";
 const pathNames = {
   "/": "Home",
   "about-me": "About Me",
-  "projects": "Projects",
-  "studies": "Studies",
-  "tools": "Tools",
-  "blog": "Blog",
-  "experience": "Experience",
+  projects: "Projects",
+  studies: "Studies",
+  tools: "Tools",
+  blog: "Blog",
+  experience: "Experience",
 };
 
 const slugs = {
-  "tiamat": "Tiamat",
+  tiamat: "Tiamat",
   "dnd-sheet": "DnD Sheet",
   "to-dool": "To-Dool",
-  "buggle": "Buggle",
-  "undersounds": "Undersounds",
-  "microservices": "Microservices",
+  buggle: "Buggle",
+  undersounds: "Undersounds",
+  microservices: "Microservices",
   "deep-learning": "Deep Learning",
   "cap-theorem": "CAP Theorem",
   "business-intelligence": "Business Intelligence",
@@ -32,10 +32,21 @@ export const TypedText = () => {
 
     let pathString;
 
+    const toTitleCase = (str) => {
+      return str
+        .replace(/-/g, " ")
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        .join(" ");
+    }
+
     if (paths.length === 2) {
       pathString = "&lt; " + pathNames[paths[0]] + " /&gt;";
     } else if (paths.length === 3) {
-      pathString = "&lt; " + slugs[paths[1]] + " /&gt;";
+      pathString =
+        "&lt; " + (slugs[paths[1]] || toTitleCase(paths[1])) + " /&gt;";
     } else {
       pathString = "&lt; " + pathNames[path] + " /&gt;";
     }
