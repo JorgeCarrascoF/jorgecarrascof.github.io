@@ -7,16 +7,22 @@ const pathNames = {
   "projects": "Projects",
   "studies": "Studies",
   "tools": "Tools",
+  "blog": "Blog",
   "experience": "Experience",
 };
 
-const projects = {
+const slugs = {
   "tiamat": "Tiamat",
   "dnd-sheet": "DnD Sheet",
   "to-dool": "To-Dool",
   "buggle": "Buggle",
   "undersounds": "Undersounds",
   "microservices": "Microservices",
+  "deep-learning": "Deep Learning",
+  "cap-theorem": "CAP Theorem",
+  "business-intelligence": "Business Intelligence",
+  "machine-learning": "Machine Learning",
+  "martin-fowler": "Martin Fowler",
 };
 
 export const TypedText = () => {
@@ -29,7 +35,7 @@ export const TypedText = () => {
     if (paths.length === 2) {
       pathString = "&lt; " + pathNames[paths[0]] + " /&gt;";
     } else if (paths.length === 3) {
-      pathString = "&lt; " + projects[paths[1]] + " /&gt;";
+      pathString = "&lt; " + slugs[paths[1]] + " /&gt;";
     } else {
       pathString = "&lt; " + pathNames[path] + " /&gt;";
     }
