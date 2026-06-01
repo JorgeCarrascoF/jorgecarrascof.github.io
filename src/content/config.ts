@@ -35,7 +35,7 @@ const tools = defineCollection({
     img: z.string().optional().nullable(),
     confidence: z.number(),
   })
-})
+});
 
 const experience = defineCollection({
   schema: z.object({
@@ -51,6 +51,15 @@ const experience = defineCollection({
     link: z.string().url(),
     img: z.string().optional().nullable(),
   })
-})
+});
 
-export const collections = { projects, studies, tools, experience };
+const blog = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.date(),
+    description: z.string(),
+    tags: z.array(z.string()).optional(),
+  })
+});
+
+export const collections = { projects, studies, tools, experience, blog };
